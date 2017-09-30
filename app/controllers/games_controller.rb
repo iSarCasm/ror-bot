@@ -50,6 +50,8 @@ class GamesController < ApplicationController
       move_from: [move.from.y, move.from.x],
       move_to: [move.to.y, move.to.x]
     }
+  rescue StandardError => e
+    logger.fatal game.id_s
   end
 
   def update
