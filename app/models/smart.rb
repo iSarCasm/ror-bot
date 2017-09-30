@@ -121,7 +121,7 @@ module Smart
       can_move_to.each do |move_to|
         adj = adjacent_to_cell(move_to, board)
         adjacent_enemies = enemy_cells(adj, enemy_color)
-        moves << Move.new(cell, move_to, adjacent_enemies.count + 1)
+        moves << Move.new(cell, move_to, adjacent_enemies.count * 2 + 1)
       end
 
       if jumps > 0
@@ -130,7 +130,7 @@ module Smart
         can_move_to.each do |move_to|
           adj = adjacent_to_cell(move_to, board)
           adjacent_enemies = enemy_cells(adj, enemy_color)
-          moves << Move.new(cell, move_to, adjacent_enemies.count)
+          moves << Move.new(cell, move_to, adjacent_enemies.count * 2)
         end
       end
     end
