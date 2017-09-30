@@ -14,6 +14,8 @@ class GamesController < ApplicationController
 
   def show
     p params
+    game = Game.find_by(id_s: params[:id])
+    p game
     render json: {
       status: :ok,
       move_from: [0,2],
@@ -23,18 +25,30 @@ class GamesController < ApplicationController
 
   def update
     p params
+    game = Game.find_by(id_s: params[:id])
+    binding.pry
+    board = updated_board(game.board, params[:changes])
+    p "HELLOOOO"
+    p board
+    game.update(
+      jumps: params[:jumps],
+      board: board
+    )
     render json: {status: :ok}
   end
 
   def destroy
     p params
+    Game.find_by(id_s: params[:id]).destroy
     render json: {status: :ok}
   end
 
   private
 
-  def game_params
-
+  def updated_board(board, changes)
+    changes.each do |change|
+      board["cells"][change[0], change[1]] = change[3]
+    end
+    return board
   end
-
 end
