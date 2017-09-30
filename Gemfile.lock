@@ -51,7 +51,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   pg
-  puma
+  puma (~> 3.0)
   rake
   sinatra
   sinatra-activerecord
