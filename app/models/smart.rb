@@ -74,29 +74,39 @@ module Smart
     #neighbours << board[y;x+1] if x+1 < board[0].length
     #neighbours << board[y;x-1] if x-1 > 0
     if(y.odd?) then
-      neighbours <<  Cell.new(y-2, x, board[y-2][x]) if y - 2 >= 0
-      neighbours <<  Cell.new(y-2, x-1, board[y-2][x-1]) if y - 2 >= 0 && x - 1 >= 0
       neighbours <<  Cell.new(y, x-2, board[y][x-2]) if x - 2 >= 0
-      neighbours <<  Cell.new(y+1, x-1, board[y+1][x-1]) if y + 1 < board.length && x - 1 >= 0
-      neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
-      neighbours <<  Cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
       neighbours <<  Cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
-      neighbours <<  Cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 >= 0 && x + 2 < board[0].length
-      neighbours <<  Cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 >= 0
-      neighbours <<  Cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
-      neighbours <<  Cell.new(y-2, x+1, board[y-2][x+1]) if y - 2 >= 0 && x + 1 < board[0].length
+
       neighbours <<  Cell.new(y-1, x-1, board[y-1][x-1]) if y - 1 >= 0 && x - 1 >= 0
-    else
+      neighbours <<  Cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 >= 0 && x + 2 < board[0].length
+
+      neighbours <<  Cell.new(y+1, x-1, board[y+1][x-1]) if y + 1 < board.length && x - 1 >= 0
+      neighbours <<  Cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
+
+      neighbours <<  Cell.new(y-2, x-1, board[y-2][x-1]) if y - 2 >= 0 && x - 1 >= 0
       neighbours <<  Cell.new(y-2, x, board[y-2][x]) if y - 2 >= 0
-      neighbours <<  Cell.new(y-1, x-2, board[y-1][x-2]) if y - 1 >= 0 && x - 2 >= 0
-      neighbours <<  Cell.new(y, x-2, board[y][x-2]) if x - 2 >= 0
-      neighbours <<  Cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 >= 0
-      neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
-      neighbours <<  Cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 >= 0
-      neighbours <<  Cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
       neighbours <<  Cell.new(y-2, x+1, board[y-2][x+1]) if y - 2 >= 0 && x + 1 < board[0].length
+
+      neighbours <<  Cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 >= 0
+      neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
+      neighbours <<  Cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
+    else
+      neighbours <<  Cell.new(y, x-2, board[y][x-2]) if x - 2 >= 0
+      neighbours <<  Cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
+
+      neighbours <<  Cell.new(y-1, x-2, board[y-1][x-2]) if y - 1 >= 0 && x - 2 >= 0
+      neighbours <<  Cell.new(y-1, x+1, board[y-1][x+1]) if y - 1 >= 0 && x + 1 < board[0].length
+
+      neighbours <<  Cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 >= 0
+      neighbours <<  Cell.new(y+1, x+1, board[y+1][x+1]) if y + 1 < board.length && x + 1 < board[0].length
+
+      neighbours <<  Cell.new(y-2, x-1, board[y-2][x-1]) if y - 2 >= 0 && x - 1 > 0
+      neighbours <<  Cell.new(y-2, x, board[y-2][x]) if y - 2 >= 0
+      neighbours <<  Cell.new(y-2, x+1, board[y-2][x+1]) if y - 2 >= 0 && x + 1 < board[0].length
+
       neighbours <<  Cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 > 0
       neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
+      neighbours <<  Cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
     end
     return neighbours
   end
