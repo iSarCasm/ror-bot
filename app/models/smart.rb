@@ -25,13 +25,16 @@ module Smart
     cells = []
     board.each.with_index do |row, y|
       row.each.with_index do |c, x|
-
+        cells << cell.new(y, x, c)
       end
     end
-
+    return cells
   end
 
-  def available_cells(_cell, board)
-
+  def available_cells(cells)
+    new_cells = cells.delete_if do |c|
+      c.value != 0
+    end
+    return new_cells
   end
 end
