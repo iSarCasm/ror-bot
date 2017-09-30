@@ -21,16 +21,20 @@ class GamesController < ApplicationController
     board = game.board['cells']
     my_cells = Smart.my_cells(board, color.to_i)
 
-    my_cells.delete_if do |cell|
-      adjacent = Smart.adjacent_to(cell.x, cell.y, board)
-      free_adjacent = Smart.available_cells(adjacent)
-      free_adjacent.empty?
-    end
+    # my_cells.delete_if do |cell|
+    #   adjacent = Smart.adjacent_to(cell.x, cell.y, board)
+    #   free_adjacent = Smart.available_cells(adjacent)
+    #   free_adjacent.empty?
+    # end
+    #
+    # my_cell = my_cells.sample
+    # adjacent = Smart.adjacent_to(my_cell.x, my_cell.y, board)
+    # free_adjacent = Smart.available_cells(adjacent)
+    # move_to = free_adjacent.sample
+    enemy_color = (color.to_i == 1 ? 2 : 1)
+    jumps = 0
+    move = Smart.priority_move(my_cells, enemy_color, board, jumps)
 
-    my_cell = my_cells.sample
-    adjacent = Smart.adjacent_to(my_cell.x, my_cell.y, board)
-    free_adjacent = Smart.available_cells(adjacent)
-    move_to = free_adjacent.sample
     # binding.pry
     # render json: {
     #   status: :ok,
@@ -39,8 +43,8 @@ class GamesController < ApplicationController
     # }
     render json: {
       status: :ok,
-      move_from: [my_cell.y, my_cell.x],
-      move_to: [move_to.y, move_to.x]
+      move_from: [move.from.y, move.from.x],
+      move_to: [move.to.y, move.to.x]
     }
   end
 
