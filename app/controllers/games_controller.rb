@@ -32,10 +32,15 @@ class GamesController < ApplicationController
     free_adjacent = Smart.available_cells(adjacent)
     move_to = free_adjacent.sample
 
+    # render json: {
+    #   status: :ok,
+    #   move_from: [0 ,2],
+    #   move_to: [0, 3]
+    # }
     render json: {
       status: :ok,
-      move_from: [0 ,2],
-      move_to: [0, 3]
+      move_from: [my_cell.y , my_cell.x],
+      move_to: [move_to.y, move_to.x]
     }
   end
 
