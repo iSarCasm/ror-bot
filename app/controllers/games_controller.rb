@@ -35,6 +35,10 @@ class GamesController < ApplicationController
     jumps = game.jumps[color]
     move = Smart.priority_move(my_cells, enemy_color, board, jumps)
 
+    if game.training
+      logger.warn move.inspect
+    end
+
     # binding.pry
     # render json: {
     #   status: :ok,
