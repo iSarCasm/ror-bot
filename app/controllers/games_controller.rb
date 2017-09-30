@@ -20,11 +20,17 @@ class GamesController < ApplicationController
 
     board = game.board['cells']
     my_cells = Smart.my_cells(board, color)
+
+    my_cells.delete_if do |cell|
+      adjacent = Smart.adjacent_to(cell.x, cell.y, board)
+      free_adjacent = Smart.available_cells(adjacent)
+      free_adjacent.empty?
+    end
+
     my_cell = my_cells.sample
     adjacent = Smart.adjacent_to(my_cell.x, my_cell.y, board)
     free_adjacent = Smart.available_cells(adjacent)
     move_to = free_adjacent.sample
-    binding.pry
 
     render json: {
       status: :ok,
@@ -37,7 +43,6 @@ class GamesController < ApplicationController
     p params
     game = Game.find_by(id_s: params[:id])
     board = updated_board(game.board, params[:changes])
-    p "HELLOOOO"
     p board
     game.update(
       jumps: params[:jumps],

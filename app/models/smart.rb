@@ -41,9 +41,8 @@ module Smart
   end
 
   def self.available_cells(cells)
-    new_cells = cells.delete_if do |c|
-      c != 0
+    new_cells = cells.reject do |c|
+      c.value != 0
     end
-    return new_cells
   end
 end
