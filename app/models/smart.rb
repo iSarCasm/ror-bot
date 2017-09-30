@@ -34,14 +34,14 @@ module Smart
     cells = []
     board.each.with_index do |row, y|
       row.each.with_index do |c, x|
-        cells << Cell.new(y, x, c)
+        cells << Cell.new(y, x, c) if c == color
       end
     end
     return cells
   end
 
   def self.available_cells(cells)
-    new_cells = cells.reject do |c|
+    cells.reject do |c|
       c.value != 0
     end
   end
