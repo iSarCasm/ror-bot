@@ -16,6 +16,7 @@ class GamesController < ApplicationController
     p params
     game = Game.find_by(id_s: params[:id])
     p game
+    color = params[:color]
     render json: {
       status: :ok,
       move_from: [0,2],
@@ -26,7 +27,6 @@ class GamesController < ApplicationController
   def update
     p params
     game = Game.find_by(id_s: params[:id])
-    binding.pry
     board = updated_board(game.board, params[:changes])
     p "HELLOOOO"
     p board
@@ -47,7 +47,7 @@ class GamesController < ApplicationController
 
   def updated_board(board, changes)
     changes.each do |change|
-      board["cells"][change[0], change[1]] = change[3]
+      board["cells"][change[0]][change[1]] = change[3]
     end
     return board
   end

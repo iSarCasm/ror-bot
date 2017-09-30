@@ -35,4 +35,12 @@ module Smart
     end
     return neighbours
   end
+
+  def self.my_cells(board, color)
+    board.each.with_index do |row, y|
+      row.each.with_index do |c, x|
+
+      end
+    end
+  end
 end
