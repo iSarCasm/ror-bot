@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_s: MyString
+  first_turn: false
+  training: false
+  jumps: 
+  board: 
+
+two:
+  id_s: MyString
+  first_turn: false
+  training: false
+  jumps: 
+  board: 
