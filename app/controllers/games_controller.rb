@@ -34,8 +34,8 @@ class GamesController < ApplicationController
 
     render json: {
       status: :ok,
-      move_from: [my_cell.y ,my_cell.x],
-      move_to: [move_to.y, move_to.x]
+      move_from: [0 ,2],
+      move_to: [0, 3]
     }
   end
 
