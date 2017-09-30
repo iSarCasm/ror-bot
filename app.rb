@@ -24,7 +24,7 @@ get '/games/:id' do
   }
 end
 
-put '/games/:id'
+put '/games/:id' do
   p params
   render json: {status: :ok}
 end
