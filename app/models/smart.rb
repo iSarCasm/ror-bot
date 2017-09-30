@@ -22,10 +22,16 @@ module Smart
   end
 
   def self.my_cells(board, color)
+    cells = []
     board.each.with_index do |row, y|
       row.each.with_index do |c, x|
 
       end
     end
+
+  end
+
+  def available_cells(_cell, board)
+
   end
 end
