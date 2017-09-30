@@ -17,10 +17,19 @@ class GamesController < ApplicationController
     game = Game.find_by(id_s: params[:id])
     p game
     color = params[:color]
+
+    board = game.board['cells']
+    my_cells = Smart.my_cells(board, color)
+    my_cell = my_cells.sample
+    adjacent = Smart.adjacent_to(my_cell.x, my_cell.y, board)
+    free_adjacent = Smart.available_cells(adjacent)
+    move_to = free_adjacent.sample
+    binding.pry
+
     render json: {
       status: :ok,
-      move_from: [0,2],
-      move_to: [0,3]
+      move_from: [my_cell.y ,my_cell.x],
+      move_to: [move_to.y, move_to.x]
     }
   end
 
