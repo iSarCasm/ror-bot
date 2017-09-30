@@ -10,7 +10,7 @@ Dir["#{current_dir}/models/*.rb"].each { |file| require file }
 
 
 
-post '/games'
+post '/games' do
   p params
   render json: {status: :ok}
 end
