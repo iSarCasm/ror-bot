@@ -32,8 +32,7 @@ class GamesController < ApplicationController
     # free_adjacent = Smart.available_cells(adjacent)
     # move_to = free_adjacent.sample
     enemy_color = (color.to_i == 1 ? 2 : 1)
-    jumps = 0
-    # binding.pry
+    jumps = game.jumps[color]
     move = Smart.priority_move(my_cells, enemy_color, board, jumps)
 
     # binding.pry

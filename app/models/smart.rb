@@ -74,30 +74,30 @@ module Smart
     #neighbours << board[y;x+1] if x+1 < board[0].length
     #neighbours << board[y;x-1] if x-1 > 0
     if(y.odd?) then
-      neighbours <<  cell.new(y-1, x-2, board[y-1][x-2]) if y - 1 > 0 &&  x - 2 > 0
-      neighbours <<  cell.new(y, x-2, board[y][x-2]) if  x - 2 > 0
-      neighbours <<  cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 > 0
-      neighbours <<  cell.new(y-1,x+1,board[y-1][x+1]) if  y - 1 > 0 && x + y < board[0].length
-      neighbours <<  cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 > 0
-      neighbours <<  cell.new(y-2, x, board[y-2][x]) if y - 2 > 0
-      neighbours <<  cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
-      neighbours <<  cell.new(y-1, x+1, board[y-1][x+1]) if y - 1 > 0 && x +1 < board[0].length
-      neighbours <<  cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
-      neighbours <<  cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 > 0 && x + 2 < board[0].length
-      neighbours <<  cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
-      neighbours <<  cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
+      neighbours <<  Cell.new(y-1, x-2, board[y-1][x-2]) if y - 1 > 0 &&  x - 2 > 0
+      neighbours <<  Cell.new(y, x-2, board[y][x-2]) if  x - 2 > 0
+      neighbours <<  Cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 > 0
+      neighbours <<  Cell.new(y-1,x+1,board[y-1][x+1]) if  y - 1 > 0 && x + y < board[0].length
+      neighbours <<  Cell.new(y+2, x-1, board[y+2][x-1]) if y + 2 < board.length && x - 1 > 0
+      neighbours <<  Cell.new(y-2, x, board[y-2][x]) if y - 2 > 0
+      neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
+      neighbours <<  Cell.new(y-1, x+1, board[y-1][x+1]) if y - 1 > 0 && x +1 < board[0].length
+      neighbours <<  Cell.new(y+2, x+1, board[y+2][x+1]) if y + 2 < board.length && x + 1 < board[0].length
+      neighbours <<  Cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 > 0 && x + 2 < board[0].length
+      neighbours <<  Cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
+      neighbours <<  Cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
     else
-      neighbours <<  cell.new(y-2, x, board[y-2][x]) if y - 2 > 0
-      neighbours <<  cell.new(y-2, x-1, board[y-2][x-1]) if y - 2 > 0 && x - 1 > 0
-      neighbours <<  cell.new(y-1, x-2, board[y-1][x-2]) if y - 2 > 0 && x - 1 > 0
-      neighbours <<  cell.new(y, x-2, board[y][x-2]) if x - 2 > 0
-      neighbours <<  cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 > 0
-      neighbours <<  cell.new(y+1, x-1, board[y+1][x-1]) if y + 1 < board.length && x - 1 > 0
-      neighbours <<  cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
-      neighbours <<  cell.new(y+1, x+1, board[y+1][x+1]) if y + 1 < board.length && x + 1 < board[0].length
-      neighbours <<  cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
-      neighbours <<  cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
-      neighbours <<  cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 > 0 && x + 2 < board[0].length
+      neighbours <<  Cell.new(y-2, x, board[y-2][x]) if y - 2 > 0
+      neighbours <<  Cell.new(y-2, x-1, board[y-2][x-1]) if y - 2 > 0 && x - 1 > 0
+      neighbours <<  Cell.new(y-1, x-2, board[y-1][x-2]) if y - 2 > 0 && x - 1 > 0
+      neighbours <<  Cell.new(y, x-2, board[y][x-2]) if x - 2 > 0
+      neighbours <<  Cell.new(y+1, x-2, board[y+1][x-2]) if y + 1 < board.length && x - 2 > 0
+      neighbours <<  Cell.new(y+1, x-1, board[y+1][x-1]) if y + 1 < board.length && x - 1 > 0
+      neighbours <<  Cell.new(y+2, x, board[y+2][x]) if y + 2 < board.length
+      neighbours <<  Cell.new(y+1, x+1, board[y+1][x+1]) if y + 1 < board.length && x + 1 < board[0].length
+      neighbours <<  Cell.new(y+1, x+2, board[y+1][x+2]) if y + 1 < board.length && x + 2 < board[0].length
+      neighbours <<  Cell.new(y, x+2, board[y][x+2]) if x + 2 < board[0].length
+      neighbours <<  Cell.new(y-1, x+2, board[y-1][x+2]) if y - 1 > 0 && x + 2 < board[0].length
     end
     return neighbours
   end
@@ -116,8 +116,8 @@ module Smart
       end
 
       if jumps > 0
-        jumps = jumps_from_cell cell, board
-        can_move_to = available_cells(adjacent)
+        possible_jumps = jumps_from_cell cell, board
+        can_move_to = available_cells(possible_jumps)
         can_move_to.each do |move_to|
           adj = adjacent_to_cell(move_to, board)
           adjacent_enemies = enemy_cells(adj, enemy_color)
